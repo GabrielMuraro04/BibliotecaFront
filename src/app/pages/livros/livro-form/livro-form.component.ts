@@ -21,7 +21,7 @@ export class LivroFormComponent implements OnInit {
     private categoriaService: CategoriaService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
 
@@ -29,7 +29,7 @@ export class LivroFormComponent implements OnInit {
       titulo: ['', Validators.required],
       autor: [''],
       ano: [null],
-      categoriasIds: [[]]   
+      categoriasIds: [[]]
     });
 
     this.categoriaService.listar().subscribe({
@@ -54,7 +54,7 @@ export class LivroFormComponent implements OnInit {
         titulo: livro.titulo,
         autor: livro.autor,
         ano: livro.ano,
-        categoriasIds: livro.categorias.map((c: any) => c.id)  
+        categoriasIds: livro.categorias.map((c: any) => c.id)
       });
     });
   }
@@ -81,4 +81,15 @@ export class LivroFormComponent implements OnInit {
   cancelar() {
     this.router.navigate(['/livros']);
   }
+
+  mudarCat() {
+    const selecionadas = this.form.value.categoriasIds;
+
+    if (selecionadas.length > 3) {
+      selecionadas.pop();
+      this.form.patchValue({ categoriasIds: selecionadas });
+      alert("Você só pode escolher até 3 categorias!");
+    }
+  }
+
 }

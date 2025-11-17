@@ -31,4 +31,9 @@ export class LivroService {
   excluir(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  listarComFiltro(titulo?: string) {
+    const params = titulo ? `?titulo=${encodeURIComponent(titulo)}` : '';
+    return this.http.get<any[]>(`${this.apiUrl}${params}`);
+  }
 }

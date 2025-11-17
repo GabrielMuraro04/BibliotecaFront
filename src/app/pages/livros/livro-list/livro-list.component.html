@@ -1,21 +1,11 @@
 <h2>Livros</h2>
 
-<div style="margin-bottom: 15px;">
-  <input
-    pInputText
-    type="text"
-    placeholder="Filtrar por título"
-    [(ngModel)]="filtroTitulo"
-    (input)="filtrar()"
-  />
-
-  <button
-    pButton
-    label="Novo"
-    style="margin-left: 10px;"
-    routerLink="/livros/novo">
-  </button>
+<div style="display:flex; gap:10px; align-items:center;">
+  <input pInputText type="text" placeholder="Filtrar por título" [(ngModel)]="filtroTitulo" (input)="filtrar()" />
+  <button pButton label="Novo" (click)="editarLivro(0)"></button>
 </div>
+
+<br>
 
 <p-table [value]="livros">
   <ng-template pTemplate="header">
@@ -27,7 +17,6 @@
       <th>Ações</th>
     </tr>
   </ng-template>
-
   <ng-template pTemplate="body" let-livro>
     <tr>
       <td>{{ livro.titulo }}</td>
@@ -38,17 +27,10 @@
           {{ c.nome }}<span *ngIf="i < livro.categorias.length - 1">, </span>
         </span>
       </td>
-
       <td>
-        <button
-          pButton
-          icon="pi pi-pencil"
-          style="margin-right: 5px;"
-          [routerLink]="['/livros/editar', livro.id]">
-        </button>
-
-        <button
-          pButton
-          icon="pi pi-trash"
-          class="p-button-danger"
-          (click)="excluirLivro(livro.id)">
+        <button pButton icon="pi pi-pencil" (click)="editarLivro(livro.id)"></button>
+        <button pButton icon="pi pi-trash" class="p-button-danger" (click)="excluirLivro(livro.id)"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
