@@ -1,0 +1,54 @@
+<h2>Livros</h2>
+
+<div style="margin-bottom: 15px;">
+  <input
+    pInputText
+    type="text"
+    placeholder="Filtrar por título"
+    [(ngModel)]="filtroTitulo"
+    (input)="filtrar()"
+  />
+
+  <button
+    pButton
+    label="Novo"
+    style="margin-left: 10px;"
+    routerLink="/livros/novo">
+  </button>
+</div>
+
+<p-table [value]="livros">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Título</th>
+      <th>Autor</th>
+      <th>Ano</th>
+      <th>Categorias</th>
+      <th>Ações</th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-livro>
+    <tr>
+      <td>{{ livro.titulo }}</td>
+      <td>{{ livro.autor }}</td>
+      <td>{{ livro.ano }}</td>
+      <td>
+        <span *ngFor="let c of livro.categorias; let i = index">
+          {{ c.nome }}<span *ngIf="i < livro.categorias.length - 1">, </span>
+        </span>
+      </td>
+
+      <td>
+        <button
+          pButton
+          icon="pi pi-pencil"
+          style="margin-right: 5px;"
+          [routerLink]="['/livros/editar', livro.id]">
+        </button>
+
+        <button
+          pButton
+          icon="pi pi-trash"
+          class="p-button-danger"
+          (click)="excluirLivro(livro.id)">

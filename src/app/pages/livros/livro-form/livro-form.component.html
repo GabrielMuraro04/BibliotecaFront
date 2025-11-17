@@ -25,12 +25,17 @@
 
   <div>
     <label>Categorias (máx. 3)</label><br>
-    <p-multiSelect
-      formControlName="categorias"
-      [options]="[]"
-      optionLabel="name"
-      placeholder="Selecione"
-    ></p-multiSelect>
+
+  <p-multiSelect
+    formControlName="categoriasIds"
+    [options]="categorias"
+    optionLabel="label"
+    optionValue="value"
+    placeholder="Selecione categorias"
+    [maxSelectedLabels]="3"
+  ></p-multiSelect>
+
+
   </div>
 
   <br><br>

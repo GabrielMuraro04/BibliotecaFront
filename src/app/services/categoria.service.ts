@@ -8,7 +8,7 @@ import { Categoria } from '../models/livro.model';
 })
 export class CategoriaService {
 
-  private apiUrl = 'http://localhost:5296/api/categorias';  // ajuste para o seu backend
+private apiUrl = 'http://localhost:5012/api/Categorias';
 
   constructor(private http: HttpClient) {}
 

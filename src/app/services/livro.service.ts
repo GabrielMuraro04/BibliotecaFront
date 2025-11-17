@@ -8,9 +8,9 @@ import { Livro } from '../models/livro.model';
 })
 export class LivroService {
 
-  private apiUrl = 'http://localhost:5296/api/livros';  // ajuste para o seu backend
+  private apiUrl = 'http://localhost:5012/api/livros';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   listar(): Observable<Livro[]> {
     return this.http.get<Livro[]>(this.apiUrl);
