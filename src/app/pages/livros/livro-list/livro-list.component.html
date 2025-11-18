@@ -13,6 +13,7 @@
       <th>Título</th>
       <th>Autor</th>
       <th>Ano</th>
+      <th>Disponível</th>
       <th>Categorias</th>
       <th>Ações</th>
     </tr>
@@ -22,6 +23,7 @@
       <td>{{ livro.titulo }}</td>
       <td>{{ livro.autor }}</td>
       <td>{{ livro.ano }}</td>
+      <td>{{ livro.disponivel ? 'Sim' : 'Não' }}</td>
       <td>
         <span *ngFor="let c of livro.categorias; let i = index">
           {{ c.nome }}<span *ngIf="i < livro.categorias.length - 1">, </span>

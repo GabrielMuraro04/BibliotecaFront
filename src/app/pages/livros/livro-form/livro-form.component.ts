@@ -27,10 +27,12 @@ export class LivroFormComponent implements OnInit {
 
     this.form = this.fb.group({
       titulo: ['', Validators.required],
-      autor: [''],
-      ano: [null],
+      autor: ['', Validators.required],
+      ano: [null, Validators.required],
+      disponivel: [true],
       categoriasIds: [[]]
     });
+
 
     this.categoriaService.listar().subscribe({
       next: (cats) => {
@@ -49,15 +51,17 @@ export class LivroFormComponent implements OnInit {
   }
 
   carregarLivro(id: number) {
-    this.livroService.buscarPorId(id).subscribe(livro => {
-      this.form.patchValue({
-        titulo: livro.titulo,
-        autor: livro.autor,
-        ano: livro.ano,
-        categoriasIds: livro.categorias.map((c: any) => c.id)
-      });
+  this.livroService.buscarPorId(id).subscribe(livro => {
+    this.form.patchValue({
+      titulo: livro.titulo,
+      autor: livro.autor,
+      ano: livro.ano,
+      disponivel: livro.disponivel,
+      categoriasIds: livro.categorias.map((c: any) => c.id)
     });
-  }
+  });
+}
+
 
   salvar() {
     if (this.form.invalid) {

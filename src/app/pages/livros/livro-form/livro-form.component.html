@@ -24,17 +24,17 @@
   <br>
 
   <div>
+    <label>Disponível</label><br>
+    <input type="checkbox" formControlName="disponivel" />
+  </div>
+
+  <br>
+  
+  <div>
     <label>Categorias (máx. 3)</label><br>
 
-  <p-multiSelect
-    formControlName="categoriasIds"
-    [options]="categorias"
-    optionLabel="label"
-    optionValue="value"
-    placeholder="Selecione categorias"
-    [maxSelectedLabels]="3"
-    (onChange)="mudarCat()"
-  ></p-multiSelect>
+    <p-multiSelect formControlName="categoriasIds" [options]="categorias" optionLabel="label" optionValue="value"
+      placeholder="Selecione categorias" [maxSelectedLabels]="3" (onChange)="mudarCat()"></p-multiSelect>
 
 
   </div>

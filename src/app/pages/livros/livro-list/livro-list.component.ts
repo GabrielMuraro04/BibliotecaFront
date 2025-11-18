@@ -29,7 +29,11 @@ export class LivroListComponent implements OnInit {
   }
 
   editarLivro(id: number) {
-    this.router.navigate(['/livros', id]);
+    if (!id) {
+      this.router.navigate(['/livros/novo']);
+    } else {
+      this.router.navigate(['/livros/editar', id]);
+    }
   }
 
   excluirLivro(id: number) {
