@@ -1,12 +1,7 @@
-export interface Categoria {
-  id: number;
-  nome: string;
-}
+import { Categoria } from './categoria.model';
 
 export interface Livro {
-  id?: number;
+  id?: number;     
   titulo: string;
-  autor?: string;
-  ano?: number;
   categorias: Categoria[];
 }
